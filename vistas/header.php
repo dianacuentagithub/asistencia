@@ -7,7 +7,7 @@ if (strlen(session_id())<1)
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <title>CC | Admin</title>
+   <title>Control de Asistencia | Biogredos</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3 -->
@@ -40,8 +40,8 @@ if (strlen(session_id())<1)
   attribution=setup_tool
   page_id="280144326139427"
   theme_color="#0084ff"
-  logged_in_greeting="Hola! deseas compartir algún sistema o descargar ?"
-  logged_out_greeting="Hola! deseas compartir algún sistema o descargar ?">
+  logged_in_greeting="Hola! ¿ que deseas hacer hoy...?"
+  logged_out_greeting="Hola! ¿ que deseas hacer hoy... ?">
 </div>
 <div class="wrapper">
 
@@ -49,9 +49,9 @@ if (strlen(session_id())<1)
     <!-- Logo -->
     <a href="escritorio.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>CC</b> A</span>
+      <span class="logo-mini"><b>C.A.</b> A</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>CC</b> ADMIN</span>
+      <span class="logo-lg"><b>Biogredos</b> ADMIN</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -75,7 +75,7 @@ if (strlen(session_id())<1)
 
                 <p>
                   <?php echo $_SESSION['nombre'].' '.$_SESSION['departamento']; ?>
-                  <small>Desarrollo de sistemas informáticos</small>
+                  <small>Desarrollo de Aplicaciones Móviles</small>
                 </p>
               </li>
               <!-- Menu Footer-->
@@ -130,6 +130,8 @@ if (strlen(session_id())<1)
       </li>
 
 -->
+<?php if ($_SESSION['tipousuario']=='Administrador') {
+?>
       <li class="treeview">
           <a href="#">
             <i class="fa fa-folder"></i> <span>Acceso</span>
@@ -156,7 +158,7 @@ if (strlen(session_id())<1)
           </ul>
       </li>
 
-            <li class="treeview">
+          <li class="treeview">
           <a href="#">
             <i class="fa fa-folder"></i> <span>Asistencias</span>
             <span class="pull-right-container">
@@ -165,15 +167,30 @@ if (strlen(session_id())<1)
           </a>
           <ul class="treeview-menu">
             <li><a href="asistencia.php"><i class="fa fa-circle-o"></i> Asistencia</a></li>
+            <li><a href="rptasistencia.php"><i class="fa fa-circle-o"></i> Reportes</a></li>
            
           </ul>
       </li>
-
-
-
+<?php } ?>
+<?php if ($_SESSION['tipousuario']!='Administrador') {
+?>
+          <li class="treeview">
+          <a href="#">
+            <i class="fa fa-folder"></i> <span>Mis Asistencias</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="asistenciau.php"><i class="fa fa-circle-o"></i> Asistencia</a></li>
+            <li><a href="rptasistenciau.php"><i class="fa fa-circle-o"></i> Reportes</a></li>
+           
+          </ul>
+      </li>
+<?php } ?>
   
-      <li><a href="#"><i class="fa fa-question-circle"></i> <span>Ayuda</span><small class="label pull-right bg-yellow">PDF</small></a></li>
-      <li><a href="https://www.compartiendocodigos.net/"><i class="fa  fa-exclamation-circle"></i> <span>Acerca de</span><small class="label pull-right bg-yellow">ComCod</small></a></li>   
+      <li><a target="_blank" href="https://miguelapps.com/contacto/"><i class="fa fa-question-circle"></i> <span>Ayuda</span><small class="label pull-right bg-yellow">PDF</small></a></li>
+      <li><a target="_blank" href="https://miguelapps.com/sobre-mi/"><i class="fa  fa-exclamation-circle"></i> <span>Acerca de</span><small class="label pull-right bg-yellow">ComCod</small></a></li>   
         
       </ul>
     </section>
